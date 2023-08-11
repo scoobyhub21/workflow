@@ -16,3 +16,9 @@ jobs:
       
       - name: install requirements
         run: pip list
+      
+      - name: docker runs
+        run: docker-compose up -d
+      
+      - name: docker runs
+        run: cd dbt
