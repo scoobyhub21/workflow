@@ -22,3 +22,7 @@ jobs:
       
       - name: docker runs
         run: cd dbt
+      - name: etl
+        run: python etl_load.py
+      - name: dbt debug
+        run: cd dbt
