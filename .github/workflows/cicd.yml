@@ -26,6 +26,4 @@ jobs:
           dbt debug
           dbt deps
           dbt run
-          
-      - name: Running dbt test
-        run: dbt test
+          dbt test
