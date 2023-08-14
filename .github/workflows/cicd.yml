@@ -19,10 +19,12 @@ jobs:
       
       - name: docker runs
         run: docker-compose up -d
-      
-      - name: docker runs
-        run: cd dbt
+  
       - name: etl
         run: python etl_load.py
-      - name: dbt debug
-        run: cd dbt
+  
+      - name: elt
+        run: |
+          cd dbt
+          dbt debug
+          dbt run
