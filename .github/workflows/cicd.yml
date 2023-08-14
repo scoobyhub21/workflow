@@ -12,19 +12,19 @@ jobs:
           python-version: '3.8'
 
       - name: install requirements
-        run: pip install -r requirements.txt
+        run: pip install -q -r requirements.txt
       
-      - name: install requirements
-        run: pip list
-      
-      - name: docker runs
+      - name: Setup Env
         run: docker-compose up -d
   
       - name: etl
         run: python etl_load.py
   
-      - name: elt
+      - name: dbt deploy
         run: |
           cd dbt
           dbt debug
           dbt run
+          
+      - name: Running dbt test
+        run: dbt test
