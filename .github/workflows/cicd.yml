@@ -1,4 +1,4 @@
-name: docker-compose-actions-workflow
+name: cicd-workflow
 on: push
 jobs:
   test:
@@ -17,13 +17,14 @@ jobs:
       - name: Setup Env
         run: docker-compose up -d
   
-      - name: etl
+      - name: Load ETL
         run: python etl_load.py
   
-      - name: dbt deploy
+      - name: Deploy dbt & test
         run: |
           cd dbt
-          dbt debug
           dbt deps
           dbt run
           dbt test
+
+          
