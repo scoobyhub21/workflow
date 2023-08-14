@@ -24,6 +24,7 @@ jobs:
         run: |
           cd dbt
           dbt debug
+          dbt deps
           dbt run
           
       - name: Running dbt test
