@@ -36,4 +36,4 @@ select a.country,
 from min_max_gdp a
 left join min_gdp b on a.country = b.country
 left join max_gdp c on a.country = c.country
-order by country, year;
+order by country, year
