@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: gdp
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "cast(year as int) >= 2000"
+    columns:
+      - name: country
+        tests:
+          - not_null
+      - name: year
+        tests:
+          - not_null
+      
