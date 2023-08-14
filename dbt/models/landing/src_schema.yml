@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: API_DATA
+    database: test_db    
+    schema: public
+    tags: 
+      - market_indicator
+    tables:
+      - name: market_indicator
