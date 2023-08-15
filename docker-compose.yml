@@ -1,10 +1,12 @@
 version: '3'
 services:
-  web:
-    container_name: webapp-frontend
-    build: .
+   db:
+    image: postgres:12.7
+    container_name: postgres
+    restart: always
     ports:
-      - "5000:5000"
-  redis:
-    container_name: redis-backend
-    image: "redis:alpine"
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test_db

@@ -1,0 +1,30 @@
+name: cicd-workflow
+on: push
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: install requirements
+        run: pip install -q -r requirements.txt
+      
+      - name: Setup Env
+        run: docker-compose up -d
+  
+      - name: Load ETL
+        run: python etl_load.py
+  
+      - name: Deploy dbt & test
+        run: |
+          cd dbt
+          dbt deps
+          dbt run
+          dbt test
+
+          
